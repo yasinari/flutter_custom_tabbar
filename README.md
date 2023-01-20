@@ -5,7 +5,7 @@ A simple advanced TabBar example.
 
 <p align="center">
     <img src="https://github.com/yasinari/flutter_custom_tabbar/blob/main/lib/example/example.gif">
-p>
+
 
 
 ## Import it
