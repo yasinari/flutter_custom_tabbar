@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_tabbar/core/extension/context_extension.dart';
 
 class CustomTabBar extends StatefulWidget {
   const CustomTabBar({
@@ -107,8 +106,9 @@ class _CustomTabBarState extends State<CustomTabBar> {
   // ignore: non_constant_identifier_names
   SizedBox _TabViewItems() {
     return SizedBox(
-      height: widget._tabViewItemHeight ?? context.dynamicHeight(0.8),
-      width: widget._tabViewItemWidth ?? context.dynamicWith(1),
+      height:
+          widget._tabViewItemHeight ?? MediaQuery.of(context).size.height * 0.8,
+      width: widget._tabViewItemWidth ?? MediaQuery.of(context).size.width,
       child: PageView(
         controller: _pageController,
         onPageChanged: (value) => _changeSelectedIndex(value),
@@ -121,17 +121,21 @@ class _CustomTabBarState extends State<CustomTabBar> {
   Padding _TabBarItems(BuildContext context) {
     return Padding(
       padding: widget._padding ??
-          EdgeInsets.only(bottom: context.dynamicHeight(0.01)),
+          EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.height * 0.01,
+          ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            width: widget._tabBarItemWidth ?? context.dynamicWith(1),
-            height: widget._tabBarItemHeight ?? context.dynamicHeight(0.07),
+            width: widget._tabBarItemWidth ?? MediaQuery.of(context).size.width,
+            height: widget._tabBarItemHeight ??
+                MediaQuery.of(context).size.height * 0.07,
             child: ListView.builder(
               itemCount: widget._tabBarItems.length,
               scrollDirection: Axis.horizontal,
-              itemExtent: widget._tabBarItemExtend ?? context.dynamicWith(0.33),
+              itemExtent: widget._tabBarItemExtend ??
+                  MediaQuery.of(context).size.width * 0.33,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () => setState(() {

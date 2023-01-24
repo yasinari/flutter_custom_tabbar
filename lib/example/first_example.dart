@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_tabbar/custom_tabbar.dart';
-import 'package:flutter_custom_tabbar/core/extension/context_extension.dart';
 
 class FirstExample extends StatefulWidget {
   const FirstExample({super.key});
@@ -30,8 +29,8 @@ class _FirstExampleState extends State<FirstExample> {
             tabBarLocation: _tabBarLocation,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-            tabBarItemHeight: context.dynamicHeight(0.08),
-            tabViewItemHeight: context.dynamicHeight(0.75),
+            tabBarItemHeight: MediaQuery.of(context).size.height * 0.08,
+            tabViewItemHeight: MediaQuery.of(context).size.height * 0.75,
           )
         ],
       ),
